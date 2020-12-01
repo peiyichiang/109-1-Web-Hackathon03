@@ -26,6 +26,20 @@ const dboptions = {
   poolSize: 10
 }
 // TODO : connect mongodb here
+mongoose.connect(process.env.MONGO_URL, dboptions)
+
+const db = mongoose.connection
+
+// on: the callabck function will be called every time an error event is generated
+db.on('error', (error) => {
+  console.error(error)
+})
+
+// once: the callabck function will only be called once when connection to the db
+// is successful
+db.once('open', () => {
+  console.log('MongoDB connected!')
+})
 
 routes(app)
 

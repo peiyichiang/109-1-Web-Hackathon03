@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 const API_ROOT = 'http://localhost:4000/api'
+// creates a new Axios instance
 const instance = axios.create({
+  // sets the baseURL for all requests 
   baseURL: API_ROOT
 })
 
@@ -29,6 +31,13 @@ class Question extends Component {
 
   getQuestions = () => {
     // TODO : get questions from backend
+    // axios is a JavaScript library you can use to perform HTTP requests
+    axios.get('/getContents').then(resp => {
+      console.log(resp.data);
+    })
+    // this.setState({
+    //   contents: 
+    // })
   }
 
   componentDidMount() {
